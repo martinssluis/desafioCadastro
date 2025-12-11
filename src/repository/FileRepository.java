@@ -1,9 +1,6 @@
 package repository;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 
 public class FileRepository {
@@ -12,9 +9,9 @@ public class FileRepository {
             boolean isDerectoryCreated = directory.mkdir();
 
 
+            File file = new File(directory, "formulario.txt"); // espera uma String, por isso a conversão
             public void createFile(){
                 // converte para caminho absoluto
-                File file = new File(directory, "formulario.txt"); // espera uma String, por isso a conversão
 
                 try(FileWriter fw = new FileWriter(file);
                     BufferedWriter bw = new BufferedWriter(fw)){
@@ -24,7 +21,19 @@ public class FileRepository {
                 } catch (IOException ex){
                     ex.printStackTrace();
                 }
-                System.out.println("Diretorio criado: "+isDerectoryCreated);
-                System.out.println("Deu certo!");
+            }
+
+            public void readFile(){
+                try(FileReader fr = new FileReader(file);
+                    BufferedReader br = new BufferedReader(fr)){
+
+                    String line;
+
+                    while ((line = br.readLine()) != null){
+                        System.out.println(line);
+                    }
+                }catch (IOException ex){
+                    ex.printStackTrace();
+                }
             }
 }
