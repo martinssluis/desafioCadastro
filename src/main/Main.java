@@ -10,6 +10,7 @@ public class Main {
 
         FileRepository file = new FileRepository();
         file.createFile();
+        file.readFile();
 
     }
 }
