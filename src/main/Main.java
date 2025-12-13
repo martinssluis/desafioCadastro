@@ -1,6 +1,7 @@
 package main;
 
 import repository.FileRepository;
+import services.Menu;
 
 import java.io.IOException;
 
@@ -11,6 +12,9 @@ public class Main {
         FileRepository file = new FileRepository();
         file.createFile();
         file.readFile();
+
+        Menu menu =  new Menu();
+        menu.showMenu();
 
     }
 }
